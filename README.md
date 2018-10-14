@@ -1,24 +1,44 @@
 # Project 7 - WordPress Pentesting
 
-Time spent: **X** hours spent in total
+Time spent: **10** hours spent in total
 
 > Objective: Find, analyze, recreate, and document **five vulnerabilities** affecting an old version of WordPress
 
 ## Pentesting Report
 
 1. Unauthenticated Stored Cross-Site Scripting (XSS)
-  - [ ] Summary: 
+  - [ ] Summary: If wordpress stored text over 64 kb in the database, it was truncated, and displaying after it was fetched from the database would not properly clean html attributes, allowing for xss.
     - Vulnerability types: XSS
     - Tested in version: 4.2
+    - Works < 4.2
     - Fixed in version: 4.2.1
+    - DB Link - https://wpvulndb.com/vulnerabilities/7945
+    - CWE-79
   - [ ] GIF Walkthrough: ![](https://github.com/ayushg97/codepath-week7/blob/master/1.gif)
   - [ ] Steps to recreate: 
     - Copy and paste this text into a wordpress comment 
     - &lt;a title='x onmouseover=alert(unescape(/hello%20world/.source)) style=position:absolute;left:0;top:0;width:5000px;height:5000px  AAAAAAAAAAAA...[64 kb]..AAA'&gt;&lt;/a&gt;
     - Replace the ...[64 lb].. with any amount of data that would result in the total size of the text being over 64kb.
+    - Mouseover the newly added comment to view an xss attack.
   - [ ] Affected source code:
-    - [Link 1](https://core.trac.wordpress.org/changeset/32307/branches/4.2/src/wp-includes/wp-db.php)
-2. (Required) Vulnerability Name or ID
+    - https://core.trac.wordpress.org/changeset/32307/branches/4.2/src/wp-includes/wp-db.php
+2. Authenticated Stored Cross-Site Scripting (XSS)
+  - [ ] Summary: 
+    - Vulnerability types: XSS
+    - Tested in version: 4.2
+    - Works < 4.2.3
+    - Fixed in version: 4.2.3
+    - DB Link - https://wpvulndb.com/vulnerabilities/8111
+    - CWE-79
+  - [ ] GIF Walkthrough: ![](https://github.com/ayushg97/codepath-week7/blob/master/2.gif)
+  - [ ] Steps to recreate: 
+    - Go to the page where you create a new post as an admin
+    - Create a new post and go to text mode, and paste in
+    - &lt;a href="[caption code=">]&lt;/a>&lt;a title=" onmouseover=alert('test')  ">link&lt;/a>
+    - Preview the post and mouse over the text to get an xss popup
+  - [ ] Affected source code:
+    - https://core.trac.wordpress.org/browser/tags/version/src/source_file.php
+3. (Required) Vulnerability Name or ID
   - [ ] Summary: 
     - Vulnerability types:
     - Tested in version:
@@ -27,7 +47,7 @@ Time spent: **X** hours spent in total
   - [ ] Steps to recreate: 
   - [ ] Affected source code:
     - [Link 1](https://core.trac.wordpress.org/browser/tags/version/src/source_file.php)
-1. (Required) Vulnerability Name or ID
+4. (Optional) Vulnerability Name or ID
   - [ ] Summary: 
     - Vulnerability types:
     - Tested in version:
@@ -36,16 +56,7 @@ Time spent: **X** hours spent in total
   - [ ] Steps to recreate: 
   - [ ] Affected source code:
     - [Link 1](https://core.trac.wordpress.org/browser/tags/version/src/source_file.php)
-1. (Optional) Vulnerability Name or ID
-  - [ ] Summary: 
-    - Vulnerability types:
-    - Tested in version:
-    - Fixed in version: 
-  - [ ] GIF Walkthrough: 
-  - [ ] Steps to recreate: 
-  - [ ] Affected source code:
-    - [Link 1](https://core.trac.wordpress.org/browser/tags/version/src/source_file.php)
-1. (Optional) Vulnerability Name or ID
+5. (Optional) Vulnerability Name or ID
   - [ ] Summary: 
     - Vulnerability types:
     - Tested in version:
@@ -57,7 +68,7 @@ Time spent: **X** hours spent in total
 
 ## Assets
 
-List any additional assets, such as scripts or files
+All assets are with their associated vulnerabilities
 
 ## Resources
 
