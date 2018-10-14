@@ -1,6 +1,6 @@
 # Project 7 - WordPress Pentesting
 
-Time spent: **10** hours spent in total
+Time spent: **13** hours spent in total
 
 > Objective: Find, analyze, recreate, and document **five vulnerabilities** affecting an old version of WordPress
 
@@ -14,6 +14,7 @@ Time spent: **10** hours spent in total
     - Fixed in version: 4.2.1
     - DB Link - https://wpvulndb.com/vulnerabilities/7945
     - CWE-79
+    - No CVE
   - [ ] GIF Walkthrough: ![](https://github.com/ayushg97/codepath-week7/blob/master/1.gif)
   - [ ] Steps to recreate: 
     - Copy and paste this text into a wordpress comment 
@@ -23,13 +24,15 @@ Time spent: **10** hours spent in total
   - [ ] Affected source code:
     - https://core.trac.wordpress.org/changeset/32307/branches/4.2/src/wp-includes/wp-db.php
 2. Authenticated Stored Cross-Site Scripting (XSS)
-  - [ ] Summary: 
+  - [ ] Summary: This takes advantage of how shortcodes are parsed by wordpress, which allows for xss injection.
     - Vulnerability types: XSS
     - Tested in version: 4.2
     - Works < 4.2.3
     - Fixed in version: 4.2.3
     - DB Link - https://wpvulndb.com/vulnerabilities/8111
     - CWE-79
+    - CVE 2015-5622
+    - CVE 2015-5623
   - [ ] GIF Walkthrough: ![](https://github.com/ayushg97/codepath-week7/blob/master/2.gif)
   - [ ] Steps to recreate: 
     - Go to the page where you create a new post as an admin
@@ -37,16 +40,24 @@ Time spent: **10** hours spent in total
     - &lt;a href="[caption code=">]&lt;/a>&lt;a title=" onmouseover=alert('test')  ">link&lt;/a>
     - Preview the post and mouse over the text to get an xss popup
   - [ ] Affected source code:
-    - https://core.trac.wordpress.org/browser/tags/version/src/source_file.php
-3. (Required) Vulnerability Name or ID
-  - [ ] Summary: 
-    - Vulnerability types:
-    - Tested in version:
-    - Fixed in version: 
-  - [ ] GIF Walkthrough: 
-  - [ ] Steps to recreate: 
+    - https://core.trac.wordpress.org/changeset/33360/branches/4.2/src/wp-includes/shortcodes.php
+3. Authenticated Shortcode Tags Cross-Site Scripting (XSS)
+  - [ ] Summary: The way wordpress parsed shortcode was using a technique called KSES. This had a vulnerability which did not properly detect HTML tags, allowing for insertion of javascript, and XSS.
+    - Vulnerability types: XSS
+    - Tested in version: 4.2
+    - Works <= 4.3
+    - Fixed in version: 4.3.1
+    - DB Link - https://wpvulndb.com/vulnerabilities/8186
+    - CWE-79
+    - CVE 2015-5714
+  - [ ] GIF Walkthrough: ![](https://github.com/ayushg97/codepath-week7/blob/master/3.gif)
+  - [ ] Steps to recreate:
+    - Go to the page where you create a new post as an admin
+    - Create a new post and go to text mode, and paste in
+    - TEST!!![caption width="1" caption='&lt;a href="' ">]&lt;/a>&lt;a href="http://onMouseOver='alert(1)'">Click me&lt;/a>
+    - Preview the post and mouse over the text to get an xss popup
   - [ ] Affected source code:
-    - [Link 1](https://core.trac.wordpress.org/browser/tags/version/src/source_file.php)
+    - https://core.trac.wordpress.org/changeset/33499/branches/4.2
 4. (Optional) Vulnerability Name or ID
   - [ ] Summary: 
     - Vulnerability types:
