@@ -90,7 +90,9 @@ GIFs created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while doing the work
+Describe any challenges encountered while doing the work.
+
+It was hard to find how too execute vulnerabilites. The majority of items that wpscan shows do not show information about how to execute a hack. I could only really do ones with tutorial links from wpscan. This limits thet amout of vulnerabilites I could carry out and it took me a while to find ones that are reproduceable. 
 
 ## License
 
