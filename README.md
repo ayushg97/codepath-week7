@@ -11,11 +11,11 @@ Time spent: **X** hours spent in total
     - Vulnerability types: XSS
     - Tested in version: 4.2
     - Fixed in version: 4.2.1
-  - [ ] GIF Walkthrough: 
+  - [ ] GIF Walkthrough: ![](https://github.com/ayushg97/codepath-week7/blob/master/test.gif)
   - [ ] Steps to recreate: 
   - [ ] Affected source code:
     - [Link 1](https://core.trac.wordpress.org/changeset/32307/branches/4.2/src/wp-includes/wp-db.php)
-1. (Required) Vulnerability Name or ID
+2. (Required) Vulnerability Name or ID
   - [ ] Summary: 
     - Vulnerability types:
     - Tested in version:
